@@ -1,16 +1,20 @@
 import java.util.Scanner;
 
-public class StartGame{
-    private static Scanner put = new Scanner(System.in);
+class StartGame {
+  private static Scanner put = new Scanner(System.in);
+  public static void main(String[] args) {
+      justPlay();
+  }
 
-    public static void main(String[] args){
-        System.out.print("Silahkan masukan angka anda: ");
-        int angka  = put.nextInt();
-        if (angka < 3) {
-            System.out.print("Angka Anda kurang dari 3");
-        } else {
-            MyTictactoe tictactoe = new MyTictactoe(angka);
-            tictactoe.start();
-        }
+ static void justPlay(){
+  System.out.print("how many box you want to play: ");
+    int angka  = put.nextInt();
+    if(angka < 3){
+      System.out.print("Your number is lees than 3");
+      justPlay();
+    }else{
+      MyTictactoe tictactoe = new MyTictactoe(angka);
+      tictactoe.start();  
     }
+  }
 }

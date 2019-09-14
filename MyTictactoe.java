@@ -1,3 +1,4 @@
+import java.awt.Robot;
 import java.util.Scanner;
 
 public class MyTictactoe{
@@ -23,20 +24,20 @@ public class MyTictactoe{
         System.out.println("***************************");  
 
         do{
-            System.out.print("Silakan masukkan 1 untuk memilih karakter xn atau 2"
-             + "untuk memilih karakter on kemudian tekan Enter: ");
+            System.out.print("Please enter 1 for choose  x or  2" +
+             "for choose o and then press Enter: ");
              int pilihKarakter = input.nextInt();
              if(pilihKarakter == 1){
                  giliranPemain = 'x';
-                 System.out.println("Papan telah diinisilisasin"
-     + "**************************");
+                 System.out.println("Your Board is created" + 
+                 "********************************************************************************************");
              }else if(pilihKarakter == 2){
                  giliranPemain = 'o';
-                 System.out.println("Papan telah diinisilisasin"
-     + "**************************");
+                 System.out.println("Your Board is created" + 
+                 "********************************************************************************************");
              } else{
-                 System.out.println("Pilihan anda tidak valid!n"
-      + "*************************");
+                 System.out.println("Just choose 1 or 2!n"
+      + "********************************************************************************************");
              }
         } while (cekPilihKarakter(giliranPemain) == false);
         inisialisasiPapan();
@@ -54,13 +55,13 @@ public class MyTictactoe{
          if(giliranPemain == 'x'){
             playerSatu = 'x';
             playerDua = 'o';
-            System.out.println("PLAYER SATU: " + playerSatu);
-            System.out.println("PLAYER DUA: " + playerDua);
+            System.out.println("Player One: " + playerSatu);
+            System.out.println("Player Two: " + playerDua);
          } else if (giliranPemain == 'o') {
             playerSatu = 'o';
             playerDua = 'x';
-            System.out.println("PLAYER SATU: " + playerSatu);
-            System.out.println("PLAYER DUA: " + playerDua);
+            System.out.println("Player One: " + playerSatu);
+            System.out.println("Player Two: " + playerDua);
         }
      }
 
@@ -149,9 +150,9 @@ public class MyTictactoe{
     private void tampilkanStatus() {
         statusGame status = statusSekarang();
         if (status == statusGame.WIN)
-            System.out.println("PEMAIN " + giliranPemain + " MENANG!!");
+            System.out.println("The game has been won by " + giliranPemain  );
         else if (status == statusGame.DRAW)
-            System.out.println("PERMAINAN BERAKHIR DRAW!!");
+            System.out.println("teh result is draw !!");
     }
 
     private void inputKarakter() {
@@ -160,18 +161,18 @@ public class MyTictactoe{
         cekDraw();
         statusSekarang();
 
-        System.out.print("Pemain " + giliranPemain + " silakan pilih baris (0-2): ");
-        int row = input.nextInt();
-        System.out.print("Pemain " + giliranPemain + " silakan pilih kolom (0-2): ");
-        int col = input.nextInt();
+        System.out.print("Player " + giliranPemain + " please choose row : ");
+        int row = input.nextInt() -1 ;
+        System.out.print("Player " + giliranPemain + " please choose column : ");
+        int col = input.nextInt() - 1;
 
-        if ((row < 0) || (row > 2))
-            System.out.println("Baris tidak valid, coba lagi");
-        else if ((col < 0) || (col > 2))
-            System.out.println("Kolom tidak valid, coba lagi!");
+        if ((row < 0) || (row > ROW - 1))
+            System.out.println("Invalid line, try again");
+        else if ((col < 0) || (col > ROW - 1))
+            System.out.println("Invalid column, try again!");
 
         else if (papanPermainan[row][col] != '?')
-            System.out.println("Area ini sudah terisi, coba lagi!");
+            System.out.println("This area has been Choosen, try again!");
 
         else {
             tandaiPapan(row, col, giliranPemain);
